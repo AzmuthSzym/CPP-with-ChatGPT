@@ -7,6 +7,8 @@
 #include <functional>
 #include <string>
 #include <algorithm>
+#include <chrono>
+
 int main()
 {
     std::vector<int> vecContainer{ 5,20,30,40,11,23 };
@@ -46,9 +48,15 @@ int main()
     std::vector<int>::iterator it;
     it = std::find(vecContainer.begin(), vecContainer.end(), 2);
     if (it != vecContainer.end())
-        std::cout << "Element found in myvector: " << *it << '\n';
+        std::cout << "\nElement found in myvector: " << *it << '\n';
     else
-        std::cout << "Element not found in myvector\n";
+        std::cout << "\nElement not found in myvector\n";
 
+    auto start = std::chrono::steady_clock::now();
+    // some action
+    std::cout << "\nShowing some text" << std::endl;
+    auto end = std::chrono::steady_clock::now();
+    std::chrono::duration<double> elapsed_sec = end - start;
+    std::cout << "Elapsed time: " << elapsed_sec.count() << std::endl;
     return 0;
 }
