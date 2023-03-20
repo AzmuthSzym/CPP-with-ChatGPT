@@ -5,6 +5,7 @@
 #include <fstream>
 #include <string>
 #include <filesystem>
+#include <sstream>
 #include <vector>
 #include <random>
 #include <functional>
@@ -22,7 +23,7 @@ int main()
     std::ifstream fileRead("Test.txt");
     while (std::getline(fileRead, fileText))
     {
-        std::cout << fileText;
+        std::cout << fileText << std::endl;
     }
     fileRead.close();
 
@@ -79,7 +80,19 @@ int main()
     std::cout << "Elapsed time: " << elapsed_sec.count() << std::endl;
 
     // 6th EXERCISE - map usage
-    //std::map<
+    std::map<std::string, int> wordCountMap;
+    std::istringstream textStream(fileText);
+    std::string word;
+    std::cout << fileText << std::endl;
+    while (textStream >> word)
+    {
+        wordCountMap[word]++;
+    }
+
+    for (const auto& element : wordCountMap)
+    {
+        std::cout << element.first << ": " << element.second << std::endl;
+    }
 
     return 0;
 }
