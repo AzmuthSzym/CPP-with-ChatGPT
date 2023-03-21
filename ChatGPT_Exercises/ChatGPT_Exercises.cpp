@@ -1,6 +1,8 @@
 // ChatGPT_Exercises.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
+// TODO: Wanted to show permissions but it requires additional function, TBD in the future (ex. 9)
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -20,10 +22,10 @@ void simple_task(std::string msg)
 {
     std::cout << msg << std::endl;
 }
-namespace fs = std::experimental::filesystem;
+
 int main()
 {
-    // 1st EXERCISE - Read data from a file
+    // 1st exercise - Read data from a file
     // We assume that file does exist in the system for simplicity of this exercise
     std::string fileText;
     std::ifstream fileRead("Test.txt");
@@ -33,7 +35,7 @@ int main()
     }
     fileRead.close();
 
-    // 2nd EXERCISE - Sorting vector
+    // 2nd exercise - Sorting vector
     std::vector<int> vecContainer{ 5,20,30,40,11,23 };
     std::sort(vecContainer.begin(), vecContainer.end());
     std::cout << "\nFirst sorting (ascending): ";
@@ -48,7 +50,7 @@ int main()
         std::cout << " " << element << " ";
     }
 
-    // 3rd EXERCISE - User input to uppercase (two options)
+    // 3rd exercise - User input to uppercase (two options)
     std::cout << std::endl;
     std::string input;
     int offset = 32;
@@ -69,7 +71,7 @@ int main()
         }
     }
 
-    // 4th EXERCISE - Finding element in a vector
+    // 4th exercise - Finding element in a vector
     std::vector<int>::iterator it;
     it = std::find(vecContainer.begin(), vecContainer.end(), 2);
     if (it != vecContainer.end())
@@ -77,7 +79,7 @@ int main()
     else
         std::cout << "\nElement not found in myvector\n";
 
-    // 5th EXERCISE - Measuring time it takes to execute a piece of code
+    // 5th exercise - Measuring time it takes to execute a piece of code
     auto start = std::chrono::steady_clock::now();
     // some action
     std::cout << "\nShowing some text" << std::endl;
@@ -85,7 +87,7 @@ int main()
     std::chrono::duration<double> elapsed_sec = end - start;
     std::cout << "Elapsed time: " << elapsed_sec.count() << std::endl;
 
-    // 6th EXERCISE - map usage
+    // 6th exercise - map usage
     std::map<std::string, int> wordCountMap;
     std::istringstream textStream(fileText);
     std::string word;
@@ -99,7 +101,7 @@ int main()
         std::cout << element.first << ": " << element.second << std::endl;
     }
 
-    // 7th EXERCISE - regex to validate email address
+    // 7th exercise - regex to validate email address
     std::string valid_mail = "test.2l@gmail.com";
     std::string wrong_mail = "test.lgmail@com";
     std::regex regex_pattern(R"([_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4}))");
@@ -112,7 +114,7 @@ int main()
         std::cout << "\nwrong mail" << std::endl;
     }
 
-    // 8th EXERCISE - thread library to perform an action in parallel
+    // 8th exercise - thread library to perform an action in parallel
     std::thread thread1(simple_task, "First thread");
     std::thread thread2(simple_task, "Second thread");
     std::cout << "Thread 1 id: " << thread1.get_id() << "\n" << "Thread 2 id: " << thread2.get_id() << std::endl;
@@ -121,5 +123,11 @@ int main()
     //thread2.join();
     thread1.join();
 
+    // 9th exercise - use filesystem to list files in a directory
+    std::string my_path = "C:\\Users\\Azmuth";
+    for (const auto file : std::filesystem::directory_iterator(my_path))
+    {
+        std::cout << file.path() << std::endl;
+    }
     return 0;
 }
