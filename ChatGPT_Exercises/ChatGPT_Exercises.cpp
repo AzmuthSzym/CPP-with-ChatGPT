@@ -13,6 +13,7 @@
 #include <algorithm>
 #include <chrono>
 #include <map>
+#include <regex>
 
 namespace fs = std::experimental::filesystem;
 int main()
@@ -88,10 +89,22 @@ int main()
     {
         wordCountMap[word]++;
     }
-
     for (const auto& element : wordCountMap)
     {
         std::cout << element.first << ": " << element.second << std::endl;
+    }
+
+    // 7th EXERCISE - regex to validate email address
+    std::string valid_mail = "test.2l@gmail.com";
+    std::string wrong_mail = "test.lgmail@com";
+    std::regex regex_pattern(R"([_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4}))");
+    if (std::regex_match(wrong_mail, regex_pattern))
+    {
+        std::cout << "good mail" << std::endl;
+    }
+    else
+    {
+        std::cout << "wrong mail" << std::endl;
     }
 
     return 0;
