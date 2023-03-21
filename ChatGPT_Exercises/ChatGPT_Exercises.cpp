@@ -17,6 +17,7 @@
 #include <map>
 #include <regex>
 #include <thread>
+#include <numeric>
 
 void simple_task(std::string msg)
 {
@@ -129,5 +130,10 @@ int main()
     {
         std::cout << file.path() << std::endl;
     }
+
+    // 10th exercise - numeric library to calculate sum a list of numbers
+    int sum = std::accumulate(vecContainer.begin(), vecContainer.end(), 0);
+    std::cout << "\nSum of numbers in a vector: " << sum << std::endl;
+
     return 0;
 }
