@@ -14,7 +14,12 @@
 #include <chrono>
 #include <map>
 #include <regex>
+#include <thread>
 
+void simple_task(std::string msg)
+{
+    std::cout << msg << std::endl;
+}
 namespace fs = std::experimental::filesystem;
 int main()
 {
@@ -100,12 +105,21 @@ int main()
     std::regex regex_pattern(R"([_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4}))");
     if (std::regex_match(wrong_mail, regex_pattern))
     {
-        std::cout << "good mail" << std::endl;
+        std::cout << "\ngood mail" << std::endl;
     }
     else
     {
-        std::cout << "wrong mail" << std::endl;
+        std::cout << "\nwrong mail" << std::endl;
     }
+
+    // 8th EXERCISE - thread library to perform an action in parallel
+    std::thread thread1(simple_task, "First thread");
+    std::thread thread2(simple_task, "Second thread");
+    std::cout << "Thread 1 id: " << thread1.get_id() << "\n" << "Thread 2 id: " << thread2.get_id() << std::endl;
+    thread2.detach();
+    std::cout << "\nThread test" << std::endl;
+    //thread2.join();
+    thread1.join();
 
     return 0;
 }
