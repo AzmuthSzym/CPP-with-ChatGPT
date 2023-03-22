@@ -18,6 +18,7 @@
 #include <regex>
 #include <thread>
 #include <numeric>
+#include <bitset>
 
 void simple_task(std::string msg)
 {
@@ -134,6 +135,16 @@ int main()
     // 10th exercise - numeric library to calculate sum a list of numbers
     int sum = std::accumulate(vecContainer.begin(), vecContainer.end(), 0);
     std::cout << "\nSum of numbers in a vector: " << sum << std::endl;
+
+    // 11th exercise - bitset library to perform binary operations
+    std::bitset<4> bitset1{ 0b1110 };
+    std::bitset<4> bitset2{ 0b1011 };
+
+    std::cout << "Bitset1: " << bitset1 << " Bitset2: " << bitset2 << std::endl;
+    std::cout << "And operation: " << (bitset1 & bitset2) << std::endl;
+    std::cout << "Or operation: " << (bitset1 | bitset2) << std::endl;
+    bitset1 |= 0b0001;
+    std::cout << "Bitset1: " << bitset1 << std::endl;
 
     return 0;
 }
