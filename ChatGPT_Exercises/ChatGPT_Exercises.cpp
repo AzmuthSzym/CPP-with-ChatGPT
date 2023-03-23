@@ -19,6 +19,7 @@
 #include <thread>
 #include <numeric>
 #include <bitset>
+#include <random>
 
 void simple_task(std::string msg)
 {
@@ -145,6 +146,16 @@ int main()
     std::cout << "Or operation: " << (bitset1 | bitset2) << std::endl;
     bitset1 |= 0b0001;
     std::cout << "Bitset1: " << bitset1 << std::endl;
+
+    // 12th exercise - random library to generate password
+    const char alphanum[] = "0123456789!@#$%^&*abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    int pass_length = 20;
+    srand(time(0));
+    for (int i = 0; i < pass_length; i++)
+    {
+        std::cout << alphanum[rand() % sizeof(alphanum) - 1];
+    }
+    std::cout << "\n";
 
     return 0;
 }
