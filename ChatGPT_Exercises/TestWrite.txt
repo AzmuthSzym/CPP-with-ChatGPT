@@ -1,0 +1,1 @@
+This is a very simple text to be put in the file called TestWrite just to see if it works 

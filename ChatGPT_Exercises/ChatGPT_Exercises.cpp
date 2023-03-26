@@ -20,6 +20,7 @@
 #include <numeric>
 #include <bitset>
 #include <random>
+#include <iterator>
 
 void simple_task(std::string msg)
 {
@@ -156,6 +157,30 @@ int main()
         std::cout << alphanum[rand() % sizeof(alphanum) - 1];
     }
     std::cout << "\n";
+
+    // 13th exercise - fstream library to write data to a file
+    std::ofstream fileWrite;
+    fileWrite.open("TestWrite.txt");
+    fileWrite << "This is a very simple text to be put in the file called TestWrite just to see if it works \n";
+    fileWrite.close();
+
+    // 14th exercise - iterator library to reverse the order of elements in a vector
+    std::vector<int> vecTest{ 5,20,30,40,11,23 };
+    std::cout << "Original vector: ";
+    for (int x : vecTest) 
+    {
+        std::cout << x << " ";
+    }
+    std::cout << std::endl;
+
+    std::reverse(vecTest.begin(), vecTest.end());
+
+    std::cout << "Reversed vector: ";
+    for (int x : vecTest) {
+        std::cout << x << " ";
+    }
+    std::cout << std::endl;
+
 
     return 0;
 }
