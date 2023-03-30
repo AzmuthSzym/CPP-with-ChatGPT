@@ -22,6 +22,7 @@
 #include <iterator>
 #include <locale>
 #include <time.h>
+#include <tuple>
 
 void simple_task(std::string msg)
 {
@@ -193,5 +194,14 @@ int main()
     localtime_s(&timeinfo, &now);
     std::cout << "Formatted date: " << std::put_time(&timeinfo, "%c") << std::endl;
 
+    // 16th exercise - tuple class to store and manipulate a set of values
+    std::tuple<std::string, int> tupleProd = std::make_tuple("Test Prod", 5);
+    //Display values
+    std::cout << "Product name: " << std::get<0>(tupleProd) << std::endl;
+    std::cout << "Product value: " << std::get<1>(tupleProd) << std::endl;
+    //Change value and show it
+    std::get<1>(tupleProd) = 12;
+    std::cout << "Product name: " << std::get<0>(tupleProd) << std::endl;
+    std::cout << "Product value: " << std::get<1>(tupleProd) << std::endl;
     return 0;
 }
