@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\Azmuth\source\repos\CPP-with-ChatGPT\ChatGPT_Exercises\ChatGPT_Exercises.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Azmuth\source\repos\CPP-with-ChatGPT\ChatGPT_Exercises\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{3EC8C0E9-C298-3EA8-8B59-B8FBEE4B8A33}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

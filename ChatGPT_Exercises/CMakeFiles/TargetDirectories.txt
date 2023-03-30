@@ -1,0 +1,3 @@
+C:/Users/Azmuth/source/repos/CPP-with-ChatGPT/ChatGPT_Exercises/CMakeFiles/myapp.dir
+C:/Users/Azmuth/source/repos/CPP-with-ChatGPT/ChatGPT_Exercises/CMakeFiles/ALL_BUILD.dir
+C:/Users/Azmuth/source/repos/CPP-with-ChatGPT/ChatGPT_Exercises/CMakeFiles/ZERO_CHECK.dir

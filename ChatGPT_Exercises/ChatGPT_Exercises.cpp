@@ -11,7 +11,6 @@
 #include <vector>
 #include <random>
 #include <functional>
-#include <string>
 #include <algorithm>
 #include <chrono>
 #include <map>
@@ -21,6 +20,8 @@
 #include <bitset>
 #include <random>
 #include <iterator>
+#include <locale>
+#include <time.h>
 
 void simple_task(std::string msg)
 {
@@ -181,6 +182,16 @@ int main()
     }
     std::cout << std::endl;
 
+    // 15th exercise - locale library to format numbers and dates according to the user's location
+    std::locale userSetting("en_US.UTF-8");
+    double testNum = 1234567.01;
+    std::cout.imbue(userSetting);
+    std::cout << "Formatted number: " << std::fixed << std::setprecision(4) << testNum << std::endl;
+
+    std::time_t now = std::time(nullptr);
+    std::tm timeinfo;
+    localtime_s(&timeinfo, &now);
+    std::cout << "Formatted date: " << std::put_time(&timeinfo, "%c") << std::endl;
 
     return 0;
 }
