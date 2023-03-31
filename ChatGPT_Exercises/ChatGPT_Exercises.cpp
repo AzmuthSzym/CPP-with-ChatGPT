@@ -23,6 +23,7 @@
 #include <locale>
 #include <time.h>
 #include <tuple>
+#include <queue>
 
 void simple_task(std::string msg)
 {
@@ -203,5 +204,21 @@ int main()
     std::get<1>(tupleProd) = 12;
     std::cout << "Product name: " << std::get<0>(tupleProd) << std::endl;
     std::cout << "Product value: " << std::get<1>(tupleProd) << std::endl;
+
+    // 17th exercise - queue container to simulate a line of customers at a store
+    std::queue<std::string> queueTest;
+    queueTest.push("John");
+    queueTest.push("Alice");
+    queueTest.push("Bob");
+    queueTest.push("Tom");
+
+    std::cout << "Initial line of customers:" << std::endl;
+    while (!queueTest.empty()) {
+        std::cout << queueTest.front() << std::endl;
+        queueTest.pop();
+    }
+    //std::cout << queueTest.front() << std::endl;
+
+
     return 0;
 }
