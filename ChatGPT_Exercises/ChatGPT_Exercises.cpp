@@ -24,7 +24,17 @@
 #include <time.h>
 #include <tuple>
 #include <queue>
+#include <atomic>
 
+std::atomic<int> sharedVar(0);
+
+void increment()
+{
+    for (int i = 0; i < 1000; ++i) 
+    {
+        sharedVar++;
+    }
+}
 void simple_task(std::string msg)
 {
     std::cout << msg << std::endl;
@@ -219,6 +229,47 @@ int main()
     }
     //std::cout << queueTest.front() << std::endl;
 
+    // 18th exercise - unordered_map container to store a list of words and their frequencies in a text file
+    // Done similarly to ex. 6
+    std::unordered_map<std::string, int> unorderedMap;
+    std::istringstream textStream2(fileText);
+    std::string word2;
+    std::cout << fileText << std::endl;
+    while (textStream2 >> word2)
+    {
+        unorderedMap[word2]++;
+    }
+    for (const auto& element : unorderedMap)
+    {
+        std::cout << element.first << ": " << element.second << std::endl;
+    }
 
+    // 19th exercise - bitset class to perform encryption and decryption on a message
+    std::string message = "Very secure message";
+    std::string binary = "";
+    for (char const& c : message) {
+        binary += std::bitset<8>(c).to_string();
+    }
+    std::reverse(binary.begin(), binary.end());
+    // There appears to be some problem with size and in general with conversion of bitsets
+    // I will investigate because this is very weird, but for now it works
+    std::bitset<6*sizeof(binary)-16> msgBits{ binary };
+    std::cout << sizeof(binary) << std::endl;
+    std::cout << sizeof(message) << std::endl;
+    std::cout << sizeof(msgBits) << std::endl;
+    std::cout << "Original message:  " << msgBits.to_string() << std::endl;
+    msgBits ^= 0b101010101111100010101010101000000000111111111000000010101010;
+    std::cout << "Encrypted message: " << msgBits.to_string() << std::endl;
+    msgBits ^= 0b101010101111100010101010101000000000111111111000000010101010;
+    std::cout << "Decrypted message: " << msgBits.to_string() << std::endl;
+
+    // 20th exercise - atomic library to perform thread-safe operations on a shared variable
+    // Better example can be found here: https://cplusplus.com/reference/atomic/atomic/atomic/
+    std::thread t1(increment);
+    std::thread t2(increment);
+    t1.join();
+    t2.join();
+
+    std::cout << "Shared variable value: " << sharedVar << std::endl;
     return 0;
 }
